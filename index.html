@@ -13,7 +13,7 @@
         height: 300px;
         width: 300px;
         left: 100px;
-        top: 0.5px;
+        top: 0.25px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -100,6 +100,16 @@
               }
             }
           });
+
+          if (
+            !hoveredElements.includes(translated) &&
+            !hoveredElements.includes(normal)
+          ) {
+            translated.classList.remove("correct");
+            translated.classList.remove("incorrect");
+            normal.classList.remove("correct");
+            normal.classList.remove("incorrect");
+          }
         };
         window.onscroll = (e) => {
           setText();
@@ -109,6 +119,10 @@
   </head>
   <body>
     <div class="container">
+      In Firefox, scroll down a bit to where the fractional portion of the div
+      offset is < 0.5. Then position your cursor where the two squares overlap
+      and SLOWLY drag down over the bottom edge. There should be a time when the
+      Normal div is hovered but the Translated one is not.
       <div id="mouse-pos"></div>
       <div class="target translated">
         <div class="text top"></div>
